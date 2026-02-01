@@ -36,13 +36,13 @@ libmincrypt.a:
 	$(MAKE) CFLAGS="$(CFLAGS)" -C libmincrypt
 
 mkbootimg$(EXT):mkbootimg.o libmincrypt.a
-	$(CROSS_COMPILE)$(CC) -o $@ $^ -L. -lmincrypt $(LDFLAGS)
+	$(CC) -o $@ $^ -L. -lmincrypt $(LDFLAGS)
 
 unpackbootimg$(EXT):unpackbootimg.o
-	$(CROSS_COMPILE)$(CC) -o $@ $^ $(LDFLAGS)
+	$(CC) -o $@ $^ $(LDFLAGS)
 
 %.o:%.c
-	$(CROSS_COMPILE)$(CC) -o $@ $(CFLAGS) -c $< $(INC) -Werror
+	$(CC) -o $@ $(CFLAGS) -c $< $(INC) -Werror
 
 install:
 	install -m 755 mkbootimg$(EXT) $(PREFIX)/bin
