@@ -23,11 +23,11 @@ LIB_OBJS = dsa_sig.o p256.o p256_ec.o p256_ecdsa.o rsa.o sha.o sha256.o
 all:$(LIB)
 
 $(LIB):$(LIB_OBJS)
-	$(CROSS_COMPILE)$(AR) $@ $^
+	$(AR) $@ $^
 	$(CP) $@ ..
 
 %.o:%.c
-	$(CROSS_COMPILE)$(CC) -o $@ $(CFLAGS) -c $< $(INC) -Werror
+	$(CC) -o $@ $(CFLAGS) -c $< $(INC) -Werror
 
 clean:
 	$(RM) $(LIB_OBJS) $(LIB)
